@@ -15,16 +15,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-  return view('index');
-});
+Route::get('/', [GoalController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [
-  App\Http\Controllers\HomeController::class,
-  'index',
-])->name('home');
+Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name(
+  'home'
+);
 
 Route::resource('goals', GoalController::class)->only([
   'index',
