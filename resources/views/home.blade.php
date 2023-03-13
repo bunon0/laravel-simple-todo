@@ -18,6 +18,9 @@
           </div>
         </div>
       </div>
+      <div class="row justify-content-center">
+        <a href="{{ url('/') }}" class="btn btn-primary text-white fw-bold mt-4" style="max-width:300px">HOME画面へ</a>
+      </div>
     </div>
   </div>
 @endsection
