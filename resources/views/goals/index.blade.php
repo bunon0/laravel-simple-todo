@@ -29,27 +29,7 @@
       <span>タグの追加</span>
     </button>
 
-    {{-- GoalAddModal --}}
-    <div class="modal fade" id="goalAddModal" tabindex="-1" aria-labelledby=goalAddModal" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="goalAddModalLabel">ゴールの追加</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form action="{{ route('goals.store') }}" method="post">
-            @csrf
-            <div class="modal-body">
-              <input type="text" class="form-control" name="title" maxlength="255" placeholder="目標を入力してください">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
-              <button type="submit" class="btn btn-primary text-white">登録</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    <x-Modal.Goals.AddModal />
 
     {{-- GoalList --}}
     @if ($goals)
@@ -67,58 +47,17 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                          data-bs-target="#goalEditModal">ゴールの編集</a></li>
+                          data-bs-target="#goalEditModal{{ $goal->id }}">ゴールの編集</a></li>
                       <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                          data-bs-target="#goalDeleteModal">ゴールの削除</a></li>
+                          data-bs-target="#goalDeleteModal{{ $goal->id }}">ゴールの削除</a></li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {{-- GoalEditModal --}}
-          <div class="modal fade" id="goalEditModal" tabindex="-1" aria-labelledby=goalEditModal" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="goalEditModalLabel">ゴールの編集</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ route('goals.update', $goal) }}" method="post">
-                  @csrf
-                  @method('PUT')
-                  <div class="modal-body">
-                    <input type="text" class="form-control" name="title" maxlength="255" value="{{ $goal->title }}">
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
-                    <button type="submit" class="btn btn-primary text-white">更新</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          {{-- GoalDeleteModal --}}
-          <div class="modal fade" id="goalDeleteModal" tabindex="-1" aria-labelledby=goalDeleteModal" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="goalDeleteModalLabel">【{{ $goal->title }}】を削除してもよろしいですか？</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ route('goals.destroy', $goal) }}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
-                    <button type="submit" class="btn btn-danger text-white">削除</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+          <x-Modal.Goals.EditModal :goal="$goal" />
+          <x-Modal.Goals.DeleteModal :goal="$goal" />
         @endforeach
       </div>
     @endif
