@@ -39,9 +39,19 @@ class GoalController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(Request $request, Goal $goal)
   {
-    //
+    $request->validate([
+      'title' => 'required',
+    ]);
+
+    $goal->title = $request->input('title');
+    $goal->user_id = Auth::id();
+    $goal->save();
+
+    return redirect()
+      ->route('goals.index')
+      ->with('message', 'ゴールを更新しました!');
   }
 
   /**
