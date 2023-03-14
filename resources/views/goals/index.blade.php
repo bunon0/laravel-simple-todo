@@ -68,7 +68,8 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
                           data-bs-target="#goalEditModal">ゴールの編集</a></li>
-                      <li><a class="dropdown-item" href="#">ゴールの削除</a></li>
+                      <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                          data-bs-target="#goalDeleteModal">ゴールの削除</a></li>
                     </ul>
                   </div>
                 </div>
@@ -93,6 +94,26 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                     <button type="submit" class="btn btn-primary text-white">更新</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          {{-- GoalDeleteModal --}}
+          <div class="modal fade" id="goalDeleteModal" tabindex="-1" aria-labelledby=goalDeleteModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="goalDeleteModalLabel">【{{ $goal->title }}】を削除してもよろしいですか？</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('goals.destroy', $goal) }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    <button type="submit" class="btn btn-danger text-white">削除</button>
                   </div>
                 </form>
               </div>
