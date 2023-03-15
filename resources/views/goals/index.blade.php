@@ -34,7 +34,7 @@
     {{-- AddModal --}}
     <x-Modal.Goal.AddModal />
 
-    {{-- Goal & Todo List --}}
+    {{-- Goals --}}
     @if ($goals)
       <div class="row row-cols-1 row row-cols-md-2 row-cols-lg-3 g-4 mt-2">
         @foreach ($goals as $goal)
@@ -67,13 +67,28 @@
                     </div>
                   </div>
                 </div>
-                {{-- ToDo --}}
-                {{-- {{ dd($goal->todos) }} --}}
+                {{-- ToDos --}}
                 @if ($goal->todos)
                   @foreach ($goal->todos as $todo)
                     <div class="card mt-2">
                       <div class="card-body">
-                        <h6 class="card-title mb-1">{{ $todo->title }}</h6>
+                        <div class="d-flex align-items-center mb-1">
+                          <h6 class="card-title m-0">{{ $todo->title }}</h6>
+                          {{-- Todo Edit --}}
+                          <div class="dropdown align-self-start ms-auto bg-white rounded d-flex align-items-center"
+                            style="height:28px; width:30px;">
+                            <a href="#" class="dropdown-toggle px-2" id="dropdownMenuButton1"
+                              data-bs-toggle="dropdown" aria-expanded="false">
+                              <i class="fa-solid fa-pen-to-square text-info"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                  data-bs-target="#todoEditModal{{ $todo->id }}">Todoの編集</a></li>
+                              <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                  data-bs-target="#todoDeleteModal{{ $todo->id }}">Todoの削除</a></li>
+                            </ul>
+                          </div>
+                        </div>
                         <p class="card-text"><small
                             class="text-muted">{{ $todo->updated_at->format('Y/m/d H:i:s') }}</small></p>
                         <div class="d-flex">
@@ -91,6 +106,7 @@
           <x-Modal.Goal.EditModal :goal="$goal" />
           <x-Modal.Goal.DeleteModal :goal="$goal" />
           <x-Modal.Todo.AddModal :goal="$goal" />
+          <x-Modal.Todo.EditModal :goal="$goal" :todo="$todo" />
         @endforeach
       </div>
     @endif
