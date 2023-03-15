@@ -8,11 +8,11 @@
       <form action="{{ route('goals.store') }}" method="post">
         @csrf
         <div class="modal-body">
-          <input type="text" class="form-control" name="title" maxlength="255" placeholder="目標を入力してください">
+          <input type="text" class="form-control" name="title" maxlength="255" placeholder="ゴールを入力してください">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
-          <button type="submit" class="btn btn-primary text-white">登録</button>
+          <button type="submit" class="btn btn-info text-white">登録</button>
         </div>
       </form>
     </div>

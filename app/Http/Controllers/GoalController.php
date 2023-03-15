@@ -8,13 +8,19 @@ use Illuminate\Support\Facades\Auth;
 
 class GoalController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
   /**
    * Display a listing of the resource.
    */
   public function index()
   {
     $goals = Auth::user()->goals;
-    return view('goals.index', compact('goals'));
+    $todos = Auth::user()->todos;
+    return view('goals.index', compact('goals', 'todos'));
   }
 
   /**
