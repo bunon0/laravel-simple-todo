@@ -41,6 +41,7 @@ class TodoController extends Controller
     $todo->title = $request->input('title');
     $todo->user_id = Auth::id();
     $todo->goal_id = $goal->id;
+    $todo->done = $request->boolean('done', $todo->done);
     $todo->save();
 
     return redirect()
