@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,7 @@ Route::resource('goals', GoalController::class)->only([
   'destroy',
 ]);
 
-Route::resource('todos', GoalController::class)->only([
+Route::resource('goals.todos', TodoController::class)->only([
   'store',
   'update',
   'destroy',

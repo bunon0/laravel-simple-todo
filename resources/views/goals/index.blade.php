@@ -31,6 +31,7 @@
       </button>
     </div>
 
+    {{-- AddModal --}}
     <x-Modal.Goal.AddModal />
 
     {{-- Goal & Todo List --}}
@@ -45,19 +46,14 @@
                   <h5 class="card-title m-0 text-white">{{ $goal->title }}</h5>
                   {{-- Edit Group --}}
                   <div class="ms-auto d-flex align-items-center">
-                    {{-- Todo Edit --}}
-                    <div class="dropdown align-self-start bg-white rounded">
-                      <a href="#" class="dropdown-toggle px-2" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="fa-solid fa-plus text-info"></i>
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                            data-bs-target="#goalEditModal{{ $goal->id }}">Todoの追加</a></li>
-                      </ul>
-                    </div>
+                    {{-- Todo Add --}}
+                    <button type="button" class="btn btn-primary px-2 py-0 bg-white border-0" data-bs-toggle="modal"
+                      data-bs-target="#todoAddModal{{ $goal->id }}" style="height: 28px; width:30px;">
+                      <i class="fa-solid fa-plus text-info"></i>
+                    </button>
                     {{-- Goal Edit --}}
-                    <div class="dropdown align-self-start ms-1 bg-white rounded">
+                    <div class="dropdown align-self-start ms-1 bg-white rounded d-flex align-items-center"
+                      style="height:28px; width:30px;">
                       <a href="#" class="dropdown-toggle px-2" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <i class="fa-solid fa-pen-to-square text-info"></i>
@@ -84,8 +80,11 @@
               </div>
             </div>
           </div>
+
+          {{-- Edit Modal --}}
           <x-Modal.Goal.EditModal :goal="$goal" />
           <x-Modal.Goal.DeleteModal :goal="$goal" />
+          <x-Modal.Todo.AddModal :goal="$goal" />
         @endforeach
       </div>
     @endif
