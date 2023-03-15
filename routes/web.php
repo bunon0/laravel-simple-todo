@@ -29,3 +29,9 @@ Route::resource('goals', GoalController::class)->only([
   'update',
   'destroy',
 ]);
+
+Route::resource('todos', GoalController::class)->only([
+  'store',
+  'update',
+  'destroy',
+]);
