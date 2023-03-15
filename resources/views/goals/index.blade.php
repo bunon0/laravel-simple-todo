@@ -107,6 +107,7 @@
           <x-Modal.Goal.DeleteModal :goal="$goal" />
           <x-Modal.Todo.AddModal :goal="$goal" />
           <x-Modal.Todo.EditModal :goal="$goal" :todo="$todo" />
+          <x-Modal.Todo.DeleteModal :goal="$goal" :todo="$todo" />
         @endforeach
       </div>
     @endif
