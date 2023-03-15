@@ -31,7 +31,7 @@
       </button>
     </div>
 
-    <x-Modal.Goals.AddModal />
+    <x-Modal.Goal.AddModal />
 
     {{-- Goal & Todo List --}}
     @if ($goals)
@@ -43,17 +43,32 @@
                 {{-- Goal --}}
                 <div class="d-flex align-items-center">
                   <h5 class="card-title m-0 text-white">{{ $goal->title }}</h5>
-                  <div class="dropdown ms-auto align-self-start">
-                    <a href="#" class="dropdown-toggle ms-1" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      <i class="fa-solid fa-pen-to-square text-white"></i>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                          data-bs-target="#goalEditModal{{ $goal->id }}">ゴールの編集</a></li>
-                      <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                          data-bs-target="#goalDeleteModal{{ $goal->id }}">ゴールの削除</a></li>
-                    </ul>
+                  {{-- Edit Group --}}
+                  <div class="ms-auto d-flex align-items-center">
+                    {{-- Todo Edit --}}
+                    <div class="dropdown align-self-start bg-white rounded">
+                      <a href="#" class="dropdown-toggle px-2" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-plus text-info"></i>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                            data-bs-target="#goalEditModal{{ $goal->id }}">Todoの追加</a></li>
+                      </ul>
+                    </div>
+                    {{-- Goal Edit --}}
+                    <div class="dropdown align-self-start ms-1 bg-white rounded">
+                      <a href="#" class="dropdown-toggle px-2" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-pen-to-square text-info"></i>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                            data-bs-target="#goalEditModal{{ $goal->id }}">ゴールの編集</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                            data-bs-target="#goalDeleteModal{{ $goal->id }}">ゴールの削除</a></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 {{-- ToDo --}}
@@ -69,8 +84,8 @@
               </div>
             </div>
           </div>
-          <x-Modal.Goals.EditModal :goal="$goal" />
-          <x-Modal.Goals.DeleteModal :goal="$goal" />
+          <x-Modal.Goal.EditModal :goal="$goal" />
+          <x-Modal.Goal.DeleteModal :goal="$goal" />
         @endforeach
       </div>
     @endif
