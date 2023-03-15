@@ -73,7 +73,13 @@
                     <div class="card mt-2">
                       <div class="card-body">
                         <div class="d-flex align-items-center mb-1">
-                          <h6 class="card-title m-0">{{ $todo->title }}</h6>
+                          @if ($todo->done)
+                            <s>
+                              <h6 class="card-title m-0 text-gray-100 text-secondary">{{ $todo->title }}</h6>
+                            </s>
+                          @else
+                            <h6 class="card-title m-0">{{ $todo->title }}</h6>
+                          @endif
                           {{-- Todo Edit --}}
                           <div class="dropdown align-self-start ms-auto bg-white rounded d-flex align-items-center"
                             style="height:28px; width:30px;">
@@ -82,6 +88,19 @@
                               <i class="fa-solid fa-pen-to-square text-info"></i>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li>
+                                <form action="{{ route('goals.todos.update', [$goal, $todo]) }}" method="post"
+                                  class="dropdown-item">
+                                  @csrf
+                                  @method('PUT')
+                                  <input type="hidden" name="title" value="{{ $todo->title }}">
+                                  @if ($todo->done)
+                                    <button class="btn p-0" type="submit" name="done" value="false">未完了に戻す</button>
+                                  @else
+                                    <button class="btn p-0" type="submit" name="done" value="true">完了</button>
+                                  @endif
+                                </form>
+                              </li>
                               <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
                                   data-bs-target="#todoEditModal{{ $todo->id }}">Todoの編集</a></li>
                               <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
