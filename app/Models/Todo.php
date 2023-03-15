@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Todo extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  public function goal()
+  {
+    $this->belongsTo(Goal::class);
+  }
 }

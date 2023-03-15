@@ -13,4 +13,9 @@ class Goal extends Model
   {
     $this->belongsTo(User::class);
   }
+
+  public function todos()
+  {
+    $this->hasMany(Todo::class);
+  }
 }
