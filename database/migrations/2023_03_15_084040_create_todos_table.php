@@ -21,7 +21,7 @@ return new class extends Migration {
         ->foreignId('goal_id')
         ->constrained()
         ->onDelete('cascade');
-      $table->boolean('done');
+      $table->boolean('done')->default(0);
       $table->timestamps();
     });
   }
