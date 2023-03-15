@@ -11,6 +11,6 @@ class Todo extends Model
 
   public function goal()
   {
-    $this->belongsTo(Goal::class);
+    return $this->belongsTo(Goal::class);
   }
 }

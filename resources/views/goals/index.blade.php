@@ -68,15 +68,21 @@
                   </div>
                 </div>
                 {{-- ToDo --}}
-                <div class="card mt-2">
-                  <div class="card-body">
-                    <h6 class="card-title mb-1">ゴールのCREATE機能を作成する</h6>
-                    <p class="card-text"><small class="text-muted">xxxx年xx月xx日</small></p>
-                    <div class="d-flex">
-                      <span class="inline-block p-1 fs-6">tag名</span>
+                {{-- {{ dd($goal->todos) }} --}}
+                @if ($goal->todos)
+                  @foreach ($goal->todos as $todo)
+                    <div class="card mt-2">
+                      <div class="card-body">
+                        <h6 class="card-title mb-1">{{ $todo->title }}</h6>
+                        <p class="card-text"><small
+                            class="text-muted">{{ $todo->updated_at->format('Y/m/d H:i:s') }}</small></p>
+                        <div class="d-flex">
+                          <span class="inline-block p-1 fs-6">tag名</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  @endforeach
+                @endif
               </div>
             </div>
           </div>
