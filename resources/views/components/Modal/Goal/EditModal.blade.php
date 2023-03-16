@@ -13,7 +13,7 @@
           <input type="text" class="form-control" name="title" maxlength="255" value="{{ $goal->title }}">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+          <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">閉じる</button>
           <button type="submit" class="btn btn-info text-white">更新</button>
         </div>
       </form>

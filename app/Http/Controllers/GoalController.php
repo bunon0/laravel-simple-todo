@@ -20,7 +20,8 @@ class GoalController extends Controller
   {
     $goals = Auth::user()->goals;
     $todos = Auth::user()->todos;
-    return view('goals.index', compact('goals', 'todos'));
+    $tags = Auth::user()->tags;
+    return view('goals.index', compact('goals', 'todos', 'tags'));
   }
 
   /**

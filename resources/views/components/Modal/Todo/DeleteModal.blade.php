@@ -10,7 +10,7 @@
         @csrf
         @method('DELETE')
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+          <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">閉じる</button>
           <button type="submit" class="btn btn-danger text-white">削除</button>
         </div>
       </form>
