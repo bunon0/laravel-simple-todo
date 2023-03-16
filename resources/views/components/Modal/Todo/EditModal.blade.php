@@ -11,6 +11,27 @@
         @method('PUT')
         <div class="modal-body">
           <input type="text" class="form-control" name="title" maxlength="255" value="{{ $todo->title }}">
+          @if ($tags)
+            <ul class="list-unstyled d-flex ms-n3 mt-2">
+              @foreach ($tags as $tag)
+                <li class="ms-3 d-flex align-items-center">
+                  <label>
+                    <div class="d-flex align-items-center">
+                      @if ($todo->tags()->where('tag_id', $tag->id)->exists())
+                        <input type="checkbox" class="form-check-input m-0" name='tag_ids[]' value="{{ $tag->id }}"
+                          checked>
+                      @else
+                        <input type="checkbox" class="form-check-input m-0" name='tag_ids[]'
+                          value="{{ $tag->id }}">
+                      @endif
+                      <span href="#"
+                        class="btn bg-primary btn-sm text-white text-decoration-none rounded ms-1">{{ $tag->title }}</span>
+                    </div>
+                  </label>
+                </li>
+              @endforeach
+            </ul>
+          @endif
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">閉じる</button>

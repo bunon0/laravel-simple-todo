@@ -42,6 +42,7 @@ class TodoController extends Controller
     $todo->user_id = Auth::id();
     $todo->goal_id = $goal->id;
     $todo->done = $request->boolean('done', $todo->done);
+    $todo->tags()->sync($request->input('tag_ids'));
     $todo->save();
 
     return redirect()
