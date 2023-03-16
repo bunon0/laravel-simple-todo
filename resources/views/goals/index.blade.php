@@ -25,7 +25,7 @@
         <i class="fa-solid fa-square-plus"></i>
         <span>ゴールの追加</span>
       </button>
-      <button type="button" class="btn btn-outline-info ms-md-2">
+      <button type="button" class="btn btn-outline-info ms-md-2" data-bs-toggle="modal" data-bs-target="#tagAddModal">
         <i class="fa-solid fa-square-plus"></i>
         <span>タグの追加</span>
       </button>
@@ -33,6 +33,9 @@
 
     {{-- AddModal --}}
     <x-Modal.Goal.AddModal />
+    <x-Modal.Tag.AddModal :tags="$tags" />
+    <x-Modal.Tag.EditModal />
+    <x-Modal.Tag.DeleteModal />
 
     {{-- Goals --}}
     @if ($goals)

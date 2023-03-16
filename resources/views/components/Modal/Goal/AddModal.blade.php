@@ -11,7 +11,7 @@
           <input type="text" class="form-control" name="title" maxlength="255" placeholder="ゴールを入力してください">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+          <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">閉じる</button>
           <button type="submit" class="btn btn-info text-white">登録</button>
         </div>
       </form>

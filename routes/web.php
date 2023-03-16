@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,12 @@ Route::resource('goals', GoalController::class)->only([
 ]);
 
 Route::resource('goals.todos', TodoController::class)->only([
+  'store',
+  'update',
+  'destroy',
+]);
+
+Route::resource('tags', TagController::class)->only([
   'store',
   'update',
   'destroy',
