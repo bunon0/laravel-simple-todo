@@ -1,6 +1,7 @@
 'use strict';
 
-const editTagForm = document.forms.tagEditForm;
+const tagEditForm = document.forms.tagEditForm;
+const tagDeleteFrom = document.forms.tagDeleteForm;
 
 document
   .getElementById('tagEditModal')
@@ -9,8 +10,20 @@ document
     let tagId = tagButton.dataset.tagId;
     let tagTitle = tagButton.dataset.tagTitle;
 
-    editTagForm.action = `tags/${tagId}`;
-    editTagForm.title.value = tagTitle;
+    tagEditForm.action = `tags/${tagId}`;
+    tagEditForm.title.value = tagTitle;
+  });
 
-    console.log(editTagForm);
+document
+  .getElementById('tagDeleteModal')
+  .addEventListener('show.bs.modal', (e) => {
+    let tagButton = e.relatedTarget;
+    let tagId = tagButton.dataset.tagId;
+    let tagTitle = tagButton.dataset.tagTitle;
+
+    tagDeleteFrom.action = `tags/${tagId}`;
+
+    document.getElementById(
+      'tagDeleteModalLabel'
+    ).textContent = `【${tagTitle}】を削除してもよろしいですか？`;
   });

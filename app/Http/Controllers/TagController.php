@@ -66,8 +66,13 @@ class TagController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Tag $tag)
   {
-    //
+    $tag->delete();
+
+    return redirect(route('goals.index'))->with(
+      'message',
+      'タグを削除しました！'
+    );
   }
 }

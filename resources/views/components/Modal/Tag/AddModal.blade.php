@@ -16,8 +16,9 @@
                   <a href="#" class="btn bg-primary btn-sm text-white text-decoration-none rounded"
                     data-bs-toggle="modal" data-bs-target="#tagEditModal" data-tag-id="{{ $tag->id }}"
                     data-tag-title="{{ $tag->title }}">{{ $tag->title }}</a>
-                  <a href="#" class="ms-1">
-                    <i class="fa-solid fa-delete-left text-secondary fs-2"></i>
+                  <a href="#" class="ms-1" data-bs-toggle="modal" data-bs-target="#tagDeleteModal"
+                    data-tag-id="{{ $tag->id }}" data-tag-title="{{ $tag->title }}"><i
+                      class="fa-solid fa-delete-left text-secondary fs-2"></i>
                   </a>
                 </li>
               @endforeach
