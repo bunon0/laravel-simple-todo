@@ -34,6 +34,8 @@
     {{-- AddModal --}}
     <x-Modal.Goal.AddModal />
     <x-Modal.Tag.AddModal :tags="$tags" />
+    <x-Modal.Tag.EditModal />
+
 
     {{-- Goals --}}
     @if ($goals)

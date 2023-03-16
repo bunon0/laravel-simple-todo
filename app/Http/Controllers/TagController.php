@@ -45,27 +45,22 @@ class TagController extends Controller
   }
 
   /**
-   * Display the specified resource.
-   */
-  public function show(string $id)
-  {
-    //
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   */
-  public function edit(string $id)
-  {
-    //
-  }
-
-  /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(Request $request, Tag $tag)
   {
-    //
+    $request->validate([
+      'title' => 'required|max:255',
+    ]);
+
+    $tag->title = $request->input('title');
+    $tag->user_id = Auth::id();
+    $tag->save();
+
+    return redirect(route('goals.index'))->with(
+      'message',
+      'タグを更新しました！'
+    );
   }
 
   /**

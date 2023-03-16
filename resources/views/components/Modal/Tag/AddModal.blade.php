@@ -13,8 +13,9 @@
             <ul class="list-unstyled d-flex ms-n3 mt-2">
               @foreach ($tags as $tag)
                 <li class="ms-3 d-flex align-items-center">
-                  <a href="#"
-                    class="btn bg-primary btn-sm text-white text-decoration-none rounded">{{ $tag->title }}</a>
+                  <a href="#" class="btn bg-primary btn-sm text-white text-decoration-none rounded"
+                    data-bs-toggle="modal" data-bs-target="#tagEditModal" data-tag-id="{{ $tag->id }}"
+                    data-tag-title="{{ $tag->title }}">{{ $tag->title }}</a>
                   <a href="#" class="ms-1">
                     <i class="fa-solid fa-delete-left text-secondary fs-2"></i>
                   </a>
