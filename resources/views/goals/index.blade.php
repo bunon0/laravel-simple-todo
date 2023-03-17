@@ -122,18 +122,18 @@
                         </div>
                       </div>
                     </div>
+
+                    <x-Modal.Todo.EditModal :goal="$goal" :todo="$todo" :tags="$tags" />
+                    <x-Modal.Todo.DeleteModal :goal="$goal" :todo="$todo" />
                   @endforeach
                 @endif
               </div>
             </div>
           </div>
 
-          {{-- Edit Modal --}}
           <x-Modal.Goal.EditModal :goal="$goal" />
           <x-Modal.Goal.DeleteModal :goal="$goal" />
           <x-Modal.Todo.AddModal :goal="$goal" />
-          <x-Modal.Todo.EditModal :goal="$goal" :todo="$todo" :tags="$tags" />
-          <x-Modal.Todo.DeleteModal :goal="$goal" :todo="$todo" />
         @endforeach
       </div>
     @endif
