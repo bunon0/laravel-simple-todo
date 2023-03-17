@@ -12,9 +12,9 @@
         <div class="modal-body">
           <input type="text" class="form-control" name="title" maxlength="255" value="{{ $todo->title }}">
           @if ($tags)
-            <ul class="list-unstyled d-flex ms-n3 mt-2">
+            <ul class="list-unstyled d-flex flex-wrap ms-n3 mt-2">
               @foreach ($tags as $tag)
-                <li class="ms-3 d-flex align-items-center">
+                <li class="ms-3 d-flex mt-2 align-items-center">
                   <label>
                     <div class="d-flex align-items-center">
                       @if ($todo->tags()->where('tag_id', $tag->id)->exists())

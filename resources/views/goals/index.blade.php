@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('script')
+  <script src="{{ asset('js/main.js') }}" defer></script>
+@endpush
+
 @section('content')
   <div class="container">
 
@@ -111,25 +115,31 @@
                             </ul>
                           </div>
                         </div>
-                        <p class="card-text"><small
-                            class="text-muted">{{ $todo->updated_at->format('Y/m/d H:i:s') }}</small></p>
-                        <div class="d-flex">
-                          <span class="inline-block p-1 fs-6">tag名</span>
-                        </div>
+                        <p class="card-text  m-0"><small
+                            class="text-muted">{{ $todo->updated_at->format('Y/m/d H:i:s') }}</small>
+                        </p>
+                        <ul class="list-unstyled d-flex flex-wrap ms-n3 mt-2 mb-0">
+                          @foreach ($todo->tags()->get() as $tag)
+                            <li class="ms-3 d-flex align-items-center mt-2">
+                              <span href="#"
+                                class="btn bg-primary btn-sm text-white text-decoration-none rounded">{{ $tag->title }}</span>
+                            </li>
+                          @endforeach
+                        </ul>
                       </div>
                     </div>
+
+                    <x-Modal.Todo.EditModal :goal="$goal" :todo="$todo" :tags="$tags" />
+                    <x-Modal.Todo.DeleteModal :goal="$goal" :todo="$todo" />
                   @endforeach
                 @endif
               </div>
             </div>
           </div>
 
-          {{-- Edit Modal --}}
           <x-Modal.Goal.EditModal :goal="$goal" />
           <x-Modal.Goal.DeleteModal :goal="$goal" />
           <x-Modal.Todo.AddModal :goal="$goal" />
-          <x-Modal.Todo.EditModal :goal="$goal" :todo="$todo" :tags="$tags" />
-          <x-Modal.Todo.DeleteModal :goal="$goal" :todo="$todo" />
         @endforeach
       </div>
     @endif
