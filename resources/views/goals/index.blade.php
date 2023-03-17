@@ -115,11 +115,16 @@
                             </ul>
                           </div>
                         </div>
-                        <p class="card-text"><small
+                        <p class="card-text  m-0"><small
                             class="text-muted">{{ $todo->updated_at->format('Y/m/d H:i:s') }}</small></p>
-                        <div class="d-flex">
-                          <span class="inline-block p-1 fs-6">tag名</span>
-                        </div>
+                        @foreach ($todo->tags()->get() as $tag)
+                          <ul class="list-unstyled d-flex ms-n3 mt-2 mb-0">
+                            <li class="ms-3 d-flex align-items-center">
+                              <span href="#"
+                                class="btn bg-primary btn-sm text-white text-decoration-none rounded">{{ $tag->title }}</span>
+                            </li>
+                          </ul>
+                        @endforeach
                       </div>
                     </div>
 
